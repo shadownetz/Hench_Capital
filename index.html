@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#08091b">
+    <meta name="msapplication-TileColor" content="#08091b">
+    <meta name="theme-color" content="#08091b">
+    <meta name="Description" content="Hench Capital">
+    <title>Hench Capital</title>
+    <link rel="stylesheet" href="lib/BootStrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/BootStrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="lib/BootStrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="lib/FontAwesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/mdi-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="lib/css/animate.css">
+    <link rel="stylesheet" href="lib/css/mainStyle.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="henchCapital">
+        <transition name="slide-fade">
+            <div class="nav-menu" v-if="toggle_nav">
+                <div class="col-12 blk-1">
+                    Hench Capital&nbsp;<i class="zmdi zmdi-close float-right" @click="toggle_nav = false"></i>
+                </div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-home"></i>&nbsp;Home</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-info-outline"></i>&nbsp;About</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-badge-check"></i>&nbsp;Plans</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-account-box-mail"></i>&nbsp;News</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-comment"></i>&nbsp;FAQ</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-help-outline"></i>&nbsp;Contact</a></div>
+            </div>
+        </transition>
+        <div class="row">
+            <div class="col-10">
+                <a href="#">
+                    <img class="img-fluid hench-logo" src="./hench_logo.png" alt="hench_logo">
+                </a>
+
+            </div>
+            <div class="col-2">
+                <div class="nav-mobile" @click="toggle_nav = !toggle_nav">
+                    <svg id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177"
+                        style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px"
+                        height="25px">
+                        <g>
+                            <g>
+                                <path class="menubar"
+                                    d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z"
+                                    fill="#fff"></path>
+                            </g>
+                            <g>
+                                <path class="menubar"
+                                    d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z"
+                                    fill="#fff"></path>
+                            </g>
+                            <g>
+                                <path class="menubar"
+                                    d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z"
+                                    fill="#fff"></path>
+                            </g>
+                            <g>
+                                <path class="menubar"
+                                    d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z"
+                                    fill="#fff"></path>
+                            </g>
+                            <g>
+                                <path class="menubar"
+                                    d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z"
+                                    fill="#fff"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-6">
+                <ul class="list-inline content-list animated slideInDown">
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-bitcoin"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-inbox"></i></a>
+                    </li>
+                </ul>
+                <div class="col-md-12 text-block">
+                    bit money - lending &amp; investment platform
+                </div>
+                <div class="row" style="margin-top:10%">
+                    <div class="col-7 animated fadeIn">
+                        <button class="btn btn-outline-danger btn-lg hench-btn">Buy Coins Now !</button>
+                    </div>
+                    <div class="col-5 animated fadeIn">
+                        <button class="btn btn-outline-warning btn-lg hench-btn">Invest Now !</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="lib/js/vue.js"></script>
+    <script src="lib/js/mainScript.js"></script>
+</body>
+
+</html>
