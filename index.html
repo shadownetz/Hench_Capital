@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="lib/FontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/mdi-font/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="lib/css/animate.css">
+    <link rel="stylesheet" href="lib/owl_carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="lib/owl_carousel/css/owl.theme.default.min.css">
+    <!-- <link rel="stylesheet" href="lib/owl_carousel/css/owl.theme.default.css"> -->
     <link rel="stylesheet" href="lib/css/mainStyle.css">
 </head>
 
@@ -32,18 +35,25 @@
                 </div>
                 <div class="col-12"><a href="#"><i class="zmdi zmdi-home"></i>&nbsp;Home</a></div>
                 <div class="col-12"><a href="#"><i class="zmdi zmdi-info-outline"></i>&nbsp;About</a></div>
-                <div class="col-12"><a href="#"><i class="zmdi zmdi-badge-check"></i>&nbsp;Plans</a></div>
+                <div class="col-12"><a href="#"><i class="zmdi zmdi-badge-check"></i>&nbsp;Features</a></div>
                 <div class="col-12"><a href="#"><i class="zmdi zmdi-account-box-mail"></i>&nbsp;News</a></div>
                 <div class="col-12"><a href="#"><i class="zmdi zmdi-comment"></i>&nbsp;FAQ</a></div>
                 <div class="col-12"><a href="#"><i class="zmdi zmdi-help-outline"></i>&nbsp;Contact</a></div>
             </div>
         </transition>
-        <div class="row">
+        <div class="row" id="nav">
             <div class="col-10">
                 <a href="#">
                     <img class="img-fluid hench-logo" src="./hench_logo.png" alt="hench_logo">
                 </a>
-
+                <ul class="nav-desktop">
+                    <li class=""><i class="fa fa-home"></i>&nbsp;Home</li>
+                    <li class=""><i class="fa fa-info"></i>&nbsp;About</li>
+                    <li class=""><i class="zmdi zmdi-badge-check"></i>&nbsp;Features</li>
+                    <li class=""><i class="zmdi zmdi-pages"></i>&nbsp;News</li>
+                    <li class=""><i class="fa fa-question"></i>&nbsp;FAQ</li>
+                    <li class=""><i class="fa fa-road"></i>&nbsp;Contact</li>
+                </ul>
             </div>
             <div class="col-2">
                 <div class="nav-mobile" @click="toggle_nav = !toggle_nav">
@@ -79,6 +89,13 @@
                         </g>
                     </svg>
                 </div>
+                <div class="nav-acc" @click="accList = !accList">
+                    <i class="zmdi zmdi-account"></i>&nbsp;Account&nbsp;<i class="fa fa-caret-down"></i>
+                </div>
+                <div id="nav-acc-item" class="animated fadeIn" v-if="accList">
+                    <a href="#"><i class="fa fa-user-plus"></i> SignUp</a>
+                    <a href="#"><i class="fa fa-universal-access"></i> Login</a>
+                </div>
             </div>
         </div>
         <div class="row content">
@@ -103,19 +120,516 @@
                 <div class="col-md-12 text-block">
                     bit money - lending &amp; investment platform
                 </div>
-                <div class="row" style="margin-top:10%">
-                    <div class="col-7 animated fadeIn">
-                        <button class="btn btn-outline-danger btn-lg hench-btn">Buy Coins Now !</button>
+            </div>
+            <div class="col-md-6 content-highlight">
+                <div class="innerlay">
+                    <div id="carouselHighlight" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h2 class="text-block animated flash">SIGN UP&nbsp;<i class="fa fa-thumbs-up"></i></h2>
+                            </div>
+                            <div class="carousel-item">
+                                <h2 class="text-block animated pulse">GET FUNDs&nbsp;<i class="fa fa-money"></i></h2>
+                            </div>
+                            <div class="carousel-item">
+                                <h2 class="text-block animated rubberBand">EARN PROFITs&nbsp;<i
+                                        class="fa fa-clock-o"></i></h2>
+                            </div>
+                            <div class="carousel-item">
+                                <h2 class="text-block animated heartBeat">MAKE WITHDRAWALs&nbsp;<i
+                                        class="fa fa-bank"></i></h2>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-5 animated fadeIn">
-                        <button class="btn btn-outline-warning btn-lg hench-btn">Invest Now !</button>
+                </div>
+            </div>
+
+            <div class="container-fluid ght" style="margin-top:10%;">
+                <div class="row">
+                    <div class="col-md-2 animated fadeIn">
+                        <button class="btn btn-lg hench-btn">Buy Coins Now !</button>
+                    </div>
+                    <div class="col-md-2 animated fadeIn">
+                        <button class="btn btn-lg hench-btn">Invest Now !</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="row pre-view" style="margin-top:10%">
+                    <div class="rete-list animated slideInDown">
+                        <div class="block">
+                            <div class="col-12">
+                                <i class="fa fa-bitcoin fa-4x icn"></i>&nbsp;
+                                <span>Bitcoin</span>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-lg hench-btn">0.00000 BTC</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rete-list animated slideInDown">
+                        <div class="block">
+                            <div class="col-12">
+                                <img class="img-fluid" src="./images/ethereum.png" alt="ethereum">&nbsp;
+                                <span>Ethereum</span>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-lg hench-btn">0.00000 ETH</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="rete-list animated slideInDown">
+                        <div class="block">
+                            <div class="col-12">
+                                <img class="img-fluid" src="./images/naira.svg" alt="ethereum" width="47px"
+                                    height="69">&nbsp;
+                                <span>Naira</span>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-lg hench-btn">0.00000 NGN</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rete-list animated slideInDown">
+                        <div class="block">
+                            <div class="col-12">
+                                <i class="fa fa-dollar fa-4x icn"></i>&nbsp;
+                                <span>Dollars</span>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-lg hench-btn">0.00000 ETH</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rete-list animated slideInDown">
+                        <div class="block">
+                            <div class="col-12">
+                                <img class="img-fluid" src="./images/exchange.png" alt="ethereum">&nbsp;
+                                <span>Token Sale</span>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-lg hench-btn">0.00000</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row hench-about" style="margin-top:10%">
+                <div class="col-md-12">
+                    <div class="text-block">
+                        About Hench
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <p class="txt-sm">
+                        Hench Capital is a lending and investment, multicurrency and multifunctional online platform
+                        based on blockchain technology.
+                        There investors and borrowers meet each other and have the opportunity to lend money on mutually
+                        beneficial.
+                    </p>
+                    <p class="txt-sm">
+                        Hench Capital is a unique service that allows individuals to access loans from the comfort of
+                        their home in fiat currencies or crypto-currencies.
+                    </p>
+                    <p class="txt-sm">
+                        Hench Capital is a multi-functional platform which allows each participant to keep money in a
+                        multi-currency online wallet, buy and sell currency
+                        on the exchange, invest money, get a loan in a convenient currency.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <img class="img-fluid" src="./images/workflow.png" alt="work_flow">
+                </div>
+            </div>
+            <div class="sud">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 181.1"
+                    style="enable-background:new 0 0 1920 181.1;" xml:space="preserve">
+                    <g>
+                        <path class="st0" d="M0,80c0,0,28.9-4.2,43-13c14.3-9,71-35.7,137,5c17.3,7.7,33.3,13,48,11c17.3,0.3,50.3,4.7,66,23
+                             c20.3,9.7,68,40.3,134-12c24-11,59-16.3,104,2c21,7.3,85,27.7,117-14c24-30.7,62.7-55,141-12c26,10.3,72,14.7,110-14
+                             c37.7-19,89.7-29,122,53c23,32.7,47.7,66.3,97,26c24-22.7,51-78.3,137-38c0,0,28.3,15.7,52,15c23.7-0.7,50.7,4.3,76,41
+                             c19.7,19.7,71,36.7,121-2c0,0,22.3-16,55-12c0,0,32.7,6.7,56-71c23.3-76,79-92,122-29c9.3,13.7,25,42,62,43c37,1,51.7,25.3,67,48
+                             c15.3,22.7,51,22.7,53,23v28.1H0V80z"></path>
+                    </g>
+                </svg>
+            </div>
+            <div class="container-fluid hench-features">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="text-block">
+                        Our Features
+                    </div>
+                </div>
+                <ul style="padding:10%">
+                    <li>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-2">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Lending</h2>
+                                        <p>Unique platform for lending and investment with a safety fund
+                                            <br>and cooperation with world-wide arbitration.</p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 fadeInUp  animated">
+                                    <div class="imgs-l">
+                                        <figure><img class="img-fluid" src="./images/pc_with_money@background.png"
+                                                alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-1">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Lending</h2>
+                                        <p>Unique platform for lending and investment with a safety fund
+                                            <br>and cooperation with world-wide arbitration.</p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-1">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Exchange Money</h2>
+                                        <p>
+                                            Exchange between all popular currencies with a couple of clicks.
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 fadeInUp  animated">
+                                    <div class="imgs-l">
+                                        <figure><img class="img-fluid" src="./images/pc_with_bitcoin@background.png"
+                                                alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-2">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Exchange Money</h2>
+                                        <p>
+                                            Exchange between all popular currencies with a couple of clicks.
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-2">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Investment</h2>
+                                        <p>
+                                            Improved system of borrower's verification. Providing
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 fadeInUp  animated">
+                                    <div class="imgs-l">
+                                        <figure><img class="img-fluid" src="./images/ipad_with bitcoin.png" alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-1">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Investment</h2>
+                                        <p>
+                                            Improved system of borrower's verification. Providing
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-1">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Online Wallet</h2>
+                                        <p>
+                                            Keep your money, exchange your money, invest your money, pay
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 fadeInUp  animated">
+                                    <div class="imgs-l">
+                                        <figure><img class="img-fluid" src="./images/iphone_with_bitcoin.png" alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 animated fadeInUp sep-2">
+                                    <div class="contents-l mr-b30">
+                                        <h2>Online Wallet</h2>
+                                        <p>
+                                            Keep your money, exchange your money, invest your money, pay
+                                        </p>
+                                        <a href="#" class="btn1">read more</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container-fluid hench-news">
+                <div class="col-12">
+                    <div class="text-block">
+                        Latest News
+                    </div>
+                </div>
+                <div class="col-12" style="margin-top:6%">
+                    <div class="owl-carousel">
+                        <div class="item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog">
+                                            <figure><img src="images/news_01.jpg" alt=""></figure>
+                                            <div class="content">
+                                                <span><i class="fa  fa-calendar-o"></i>January 29, 2018</span>
+                                                <h4><a href="#">Report about the team's trip to the road show</a></h4>
+                                                <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This
+                                                    is
+                                                    Photoshop's ern of Lorem Ipsum Proin gravida.</p>
+                                                <a href="#" class="h-link-color">read more <i
+                                                        class="fa  fa-arrow-circle-o-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog">
+                                            <figure><img src="images/news_02.jpg" alt=""></figure>
+                                            <div class="content">
+                                                <span><i class="fa  fa-calendar-o"></i>January 29, 2018</span>
+                                                <h4><a href="#">Report about the team's trip to the road show</a></h4>
+                                                <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This
+                                                    is
+                                                    Photoshop's ern of Lorem Ipsum Proin gravida.</p>
+                                                <a href="#" class="h-link-color">read more <i
+                                                        class="fa  fa-arrow-circle-o-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog">
+                                            <figure><img src="images/news_03.jpg" alt=""></figure>
+                                            <div class="content">
+                                                <span><i class="fa  fa-calendar-o"></i>January 29, 2018</span>
+                                                <h4><a href="#">Report about the team's trip to the road show</a></h4>
+                                                <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This
+                                                    is
+                                                    Photoshop's ern of Lorem Ipsum Proin gravida.</p>
+                                                <a href="#" class="h-link-color">read more <i
+                                                        class="fa  fa-arrow-circle-o-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="text-align:center">
+                        <a href="#" class="hench-btn form-control">All News</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid hench-faq">
+                <div class="row hd">
+                    <div class="text-block">
+                        Frequently Asked Questions
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <ul>
+                        <li class="l-faq">
+                            <div class="cont">
+                                <h2>How can i start &quest;</h2>
+                                <p>Just signup to create an account with us for free</p>
+                            </div>
+                            <span><i class="fa fa-question"></i></span>
+                            <div class="mid-icons"></div>
+                        </li>
+                        <li class="r-faq">
+                            <div class="cont">
+                                <h2>How do i fund my account &quest;</h2>
+                                <p>Choose suitable investment plan and proceed to make deposit</p>
+                            </div>
+                            <span><i class="fa fa-money"></i></span>
+                            <div class="mid-icons"></div>
+                        </li>
+                        <li class="l-faq">
+                            <div class="cont">
+                                <h2>How do i earn profits&quest;</h2>
+                                <p>Watch account automatically traded with growth of profits
+                                    at a ninty-two percent wining rate.
+                                </p>
+                            </div>
+                            <span><i class="fa fa-bell"></i></span>
+                            <div class="mid-icons"></div>
+                        </li>
+                        <li class="r-faq">
+                            <div class="cont">
+                                <h2>How do i withdraw &quest;</h2>
+                                <p>Simple and swift funds withdrawals round the clock</p>
+                            </div>
+                            <span><i class="fa fa-bank"></i></span>
+                            <!-- <div class="mid-icons">
+                            </div> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sud">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 181.1"
+                    style="enable-background:new 0 0 1920 181.1;" xml:space="preserve">
+                    <g>
+                        <path class="st0" d="M0,80c0,0,28.9-4.2,43-13c14.3-9,71-35.7,137,5c17.3,7.7,33.3,13,48,11c17.3,0.3,50.3,4.7,66,23
+                                 c20.3,9.7,68,40.3,134-12c24-11,59-16.3,104,2c21,7.3,85,27.7,117-14c24-30.7,62.7-55,141-12c26,10.3,72,14.7,110-14
+                                 c37.7-19,89.7-29,122,53c23,32.7,47.7,66.3,97,26c24-22.7,51-78.3,137-38c0,0,28.3,15.7,52,15c23.7-0.7,50.7,4.3,76,41
+                                 c19.7,19.7,71,36.7,121-2c0,0,22.3-16,55-12c0,0,32.7,6.7,56-71c23.3-76,79-92,122-29c9.3,13.7,25,42,62,43c37,1,51.7,25.3,67,48
+                                 c15.3,22.7,51,22.7,53,23v28.1H0V80z"></path>
+                    </g>
+                </svg>
+            </div>
+            <div class="container-fluid hench-contact">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="text-block">
+                        Contact Us
+                    </div>
+                    <div class="row pre-view">
+                        <div class="rete-list">
+                            <div class="block">
+                                <form role="form" action="" enctype="multipart/form-data">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="fullname">Enter Fullname
+                                                    <input class="form-control" type="text" placeholder="name"
+                                                        name="fullname">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="email">Enter Email
+                                                    <input class="form-control" type="email"
+                                                        placeholder="example@mail.com" name="email">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="pnumber">Enter Phone Number
+                                                    <input class="form-control" type="tel"
+                                                        placeholder="000-000-000-000-00" name="pnumber">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="msg">Message
+                                                    <textarea class="form-control" placeholder="Your message"
+                                                        name="msg"></textarea>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="text-align:center">
+                                            <button type="submit" class="hench-btn h-lg">Send</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="rete-list-ext">
+                            <div class="innerlay">
+                                <p>
+                                    <i class="fa fa-home"></i>&nbsp;
+                                    No. 20 Silicon Valley, Georgia Western Way, Florida.
+                                </p>
+                                <p>
+                                    <i class="fa fa-phone"></i>&nbsp;
+                                    000-000-000-00 or 000-00-000-00
+                                </p>
+                                <p>
+                                    <i class="fa fa-envelope"></i>&nbsp;
+                                    example@mail.com
+                                </p>
+                                <p>
+                                        <i class="fa fa-twitter"></i>&nbsp;
+                                       #henchCapitalNg
+                                    </p>
+                                    <p>
+                                            <i class="fa fa-quote-left"></i>&nbsp;
+                                            Your NO 1 Trusted Firm&nbsp;
+                                            <i class="fa fa-quote-right"></i>
+                                        </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row hench-footer">
+            <div class="col-lg-6 col-md-12 ent">
+                <i class="fa fa-instagram"></i>&nbsp;Instagram&nbsp;
+                | <i class="fa fa-facebook"></i>&nbsp;Facebook&nbsp;
+                | <i class="fa fa-linkedin"></i>&nbsp;Linkedin&nbsp;
+            </div>
+            <div class="col-lg-6 col-md-12 ent">
+                &copy;&nbsp;2019 Hench capital
+            </div>
+        </div>
     </div>
     <script src="lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="lib/BootStrap/js/bootstrap.min.js"></script>
     <script src="lib/js/vue.js"></script>
+    <script src="lib/owl_carousel/js/owl.carousel.min.js"></script>
+    <script src="lib/js/custom.js"></script>
     <script src="lib/js/mainScript.js"></script>
 </body>
 

@@ -1,9 +1,24 @@
 $hench-colors: (
   primary: #08091b,
-  text-primary: rgb(250, 250, 250)
+  primary-light: #10122d,
+  text-primary: rgb(250, 250, 250),
+  text-default: #8486a6,
+  bitcoin: #f89e32,
+  link:#3297cc
 );
 $desktop-size: 1024px;
 $mobile_320: 320px;
+@keyframes planHighlight {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @mixin desktop {
   @media (min-width:#{$desktop-size}) {
     @content;
@@ -15,20 +30,54 @@ $mobile_320: 320px;
   }
 }
 @mixin button_theme {
-    color:map-get($hench-colors, text-primary);
-    background:linear-gradient(to right, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
-    border:2px solid rgba(57,100,208,1);
-    border-radius:20px;
+  color: get_color(text-primary);
+  background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+  border: 2px solid rgba(57, 100, 208, 1);
+  border-radius: 20px;
+}
+@mixin link_theme {
+  color: rgba(255, 255, 255, 0.61);
+  font-weight: 900;
+  text-transform: uppercase;
+  transition:all .5s linear;
+  text-decoration:none;
+}
+@function get_color($name) {
+  @return map-get($hench-colors, $name);
 }
 body {
   background-color: map-get($hench-colors, primary);
 }
 #henchCapital {
   min-height: 700px;
+  overflow: hidden;
   img.hench-logo {
     margin-top: -50px;
   }
+  .sticky{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index: 9999;
+  }
+  #nav{
+    background-color:get_color(primary);
+    height:100px;
+    // z-index:;
+  }
+  .show{
+    display:block;
+  }
+  .hide{
+    display:none;
+  }
+  .h-link-color{
+    color:get_color(link)!important;
+  }
   @include mobile320() {
+    .nav-desktop, .nav-acc, .content-highlight,.rete-list-ext{
+      display:none;
+    }
     .nav-mobile {
       display: block;
       padding: 50px 30% 0 30%;
@@ -41,17 +90,17 @@ body {
       top: 0;
       left: 0;
       background: rgba(44, 46, 83, 0.95);
-      color: map-get($hench-colors, text-primary);
-      z-index: 10;
+      color: get_color(text-primary);
+      z-index: 100000000;
       a {
-        color: map-get($hench-colors, text-primary);
+        color: get_color(text-primary);
         display: block;
         padding: 10px;
         font-size: 1.2em;
         font-weight: bold;
       }
       div {
-        border-bottom: 1px solid map-get($hench-colors, text-primary);
+        border-bottom: 1px solid get_color(text-primary);
       }
       .blk-1 {
         font-size: 1.3em;
@@ -77,8 +126,8 @@ body {
     .content {
       padding-top: 30%;
       background: url("../../images/bitcoin_bag.svg") no-repeat right center;
-      background-position: top ;
-      background-size:60%;
+      background-position: top;
+      background-size: 60%;
       .content-list {
         text-align: center;
         li {
@@ -97,15 +146,393 @@ body {
       }
       .text-block {
         text-transform: capitalize;
-        color: map-get($hench-colors, text-primary);
+        color: get_color(text-primary);
         font-size: 1.7em;
         font-weight: bold;
         word-wrap: break-word;
         text-align: center;
-        padding-top:5%;
+        padding-top: 5%;
       }
-      .hench-btn{
-          @include button_theme();
+      .hench-btn {
+        @include button_theme();
+      }
+      .hench-btn.h-lg{
+        width:50%;
+      }
+      .pre-view {
+        .rete-list {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+          // float: left;
+          padding: 0 17px;
+          margin: 0 0 30px;
+          padding-top: 15px;
+          z-index: 999;
+        }
+        .rete-list:before {
+          content: "";
+          position: absolute;
+          left: 50px;
+          right: 50px;
+          top: 0;
+          bottom: 0;
+          background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+          border-radius: 10px;
+        }
+        .block {
+          width: 100%;
+          height: 180px;
+          background: get_color(primary-light);
+          border-radius: 20px;
+          z-index: 999;
+          position: relative;
+          div {
+            padding-top: 20px;
+            padding-left: 20px;
+            color: get_color(text-primary);
+            span {
+              font-size: 1.2em;
+            }
+            i {
+              color: get_color(bitcoin);
+            }
+          }
+        }
+        .block:not(:last-child) {
+          margin-bottom: 1%;
+        }
+      }
+      .hench-about {
+        .text-block {
+          font-size: 2em;
+          font-weight: normal;
+        }
+        .txt-sm {
+          margin-top: 3%;
+          color: get_color(text-default);
+          text-align: center;
+        }
+      }
+      .sud {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        // vertical-align: middle;
+        margin: 0 0 -9px;
+        background: get_color(primary);
+        .st0 {
+          fill-rule: evenodd;
+          clip-rule: evenodd;
+          fill: get_color(primary-light);
+        }
+      }
+      .hench-features {
+        background-color: get_color(primary-light);
+        ul {
+          list-style: outside none none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          display: block;
+          overflow: hidden;
+          // vertical-align: middle;
+          z-index: 999;
+          text-align: center;
+          .imgs-1 {
+            position: relative;
+            display: block;
+            margin: 0;
+            text-align: center;
+          }
+          li {
+            position: relative;
+            display: block;
+            padding: 30px 0 0;
+            overflow: hidden;
+            // vertical-align: middle;
+            .sep-1 {
+              display: none;
+            }
+            .sep-2 {
+              display: block;
+            }
+            .contents-l {
+              text-align: center;
+              h2 {
+                color: get_color(text-primary);
+              }
+              p {
+                color: get_color(text-default);
+              }
+              a {
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 700;
+                // height: 40px;
+                // line-height: 40px;
+                padding: 10px 25px;
+                background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+                color: #fff;
+                text-transform: uppercase;
+                border-radius: 30px;
+              }
+            }
+          }
+        }
+        li:first-child {
+          padding: 0;
+        }
+      }
+      .hench-contact {
+        background-color: get_color(primary-light);
+        .text-block {
+          padding-top: 10%;
+        }
+        .pre-view {
+          .rete-list {
+            margin-top: 5%;
+            .block {
+              background-color: get_color(primary);
+              height: 464px;
+              div{
+                padding:10px;
+              }
+              form{
+                input,textarea{
+                  border-radius: 0;
+                  background-color:transparent;
+                  color:get_color(text-primary);
+                }
+                label{
+                  width:100%;
+                }
+                input:focus,textarea:focus{
+                  box-shadow: none;
+                  border-color:get_color(text-default);
+                }
+              }
+            }
+          }
+          .rete-list:before {
+            left: 80px;
+            right: 80px;
+          }
+        }
+      }
+      .hench-news {
+        .item {
+          .blog {
+            display: block;
+            position: relative;
+            // background: #45487d;
+            overflow: hidden;
+            border-radius: 22px;
+            figure {
+              display: block;
+              position: relative;
+              overflow: hidden;
+            }
+            .content {
+              display: block;
+              position: relative;
+              background: get_color(primary);
+              padding: 30px 35px;
+              color:#8486a6;
+              .span {
+                display: block;
+                font-size: 14px;
+                color: #8486a6;
+                margin: 0 0 25px;
+                i {
+                  font-size: 16px;
+                  padding-right: 8px;
+                }
+              }
+              p {
+                margin: 0 0 26px;
+              }
+              a {
+                @include link_theme();
+              }
+              a:hover{
+                color:get_color(link);
+              }
+            }
+          }
+        }
+      }
+      .hench-faq {
+        margin-top:7%;
+        > .hd{
+          background-color:get_color(primary-light);
+          .text-block{
+            padding:10px;
+          }
+        }
+        @include mobile320 {
+          ul {
+            list-style: outside none none;
+            margin: 0;
+            padding: 0;
+          }
+          li {
+            display: block;
+            border-radius: 10px;
+            margin: 0 0 -2px;
+            padding: 80px 50px;
+            .mid-icons {
+              position: absolute;
+              bottom: -14px;
+              background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              height: 28px;
+              width: 28px;
+              line-height: 24px;
+              border-radius: 100%;
+              z-index: 999;
+              text-align: center;
+            }
+          }
+          li:not(:first-child):before {
+            content: "";
+            position: absolute;
+            left: 48px;
+            right: 48px;
+            top: 0;
+            bottom: 0;
+            border-top: 2px solid #3297cc;
+            border-radius: 0;
+            left: 32px;
+            right: 38px;
+          }
+          li:after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            right: 34px;
+            top: 0;
+            bottom: 0;
+            border-right: 2px solid #3297cc;
+            border-top: 2px solid #3297cc;
+            border-bottom: 2px solid #3297cc;
+            border-radius: 0 10px 10px 0;
+            right: 24px;
+          }
+          li:first-child:after {
+            border-top-right-radius: 0;
+            border-top: 0;
+          }
+          li:nth-child(3):after {
+            content: "";
+            position: absolute;
+            width: 55%;
+            right: 34px;
+            top: 0;
+            bottom: 0;
+            border-right: 2px solid #3297cc;
+            border-top: 2px solid #3297cc;
+            border-bottom: 2px solid #3297cc;
+            border-radius: 0 10px 10px 0;
+          }
+          .l-faq {
+            text-align: right;
+            position: relative;
+            padding-right: 70px;
+            padding-left: 0;
+            .cont h2 {
+              margin: 0 0 5px;
+              font-weight: 400;
+              color: #3297cc;
+              font-size: 24px;
+            }
+            .cont p {
+              margin: 0;
+              font-size: 14px;
+              color:#8486a6;;
+            }
+            span {
+              position: absolute;
+              right: 0;
+              background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+              color: #fff;
+              border-radius: 100%;
+              text-align: center;
+              top: 39%;
+              z-index: 999;
+              height: 50px;
+              width: 50px;
+              line-height: 50px;
+              font-size: 20px;
+            }
+          }
+          .r-faq {
+            position: relative;
+            text-align: left;
+            padding-left: 70px;
+            padding-right: 0;
+            .cont h2 {
+              font-family: inherit;
+              line-height: 1.1;
+              margin: 0 0 5px;
+              font-weight: 400;
+              color: #3297cc;
+              font-size: 24px;
+            }
+            .cont p {
+              margin: 0;
+              font-size: 14px;
+              color:#8486a6;
+            }
+            span {
+              position: absolute;
+              left: 0;
+              background: linear-gradient(to right, rgba(57, 100, 208, 1) 0%, rgba(45, 193, 201, 1) 100%);
+              color: #fff;
+              border-radius: 100%;
+              text-align: center;
+              top: 39%;
+              z-index: 999;
+              height: 50px;
+              width: 50px;
+              line-height: 50px;
+              font-size: 20px;
+            }
+          }
+          .r-faq:after {
+            left: 34px;
+            right: inherit;
+            border-left: 2px solid #3297cc;
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            left: 24px;
+          }
+          .r-faq:first-child:after {
+            border-radius: 0 0 10px 0;
+            border-top: none;
+          }
+        }
+        @include desktop{
+          .l-faq,.r-faq{
+            .cont h2{
+              font-size:30px!important;
+            }
+            .cont p{
+              font-size:20px;
+            }
+          }
+        }
+      }
+    }
+    .hench-footer{
+      background-color:get_color(primary);
+      height:100px;
+      .ent{
+        padding:10px;
+        text-align:center;
+        color:get_color(text-primary);
       }
     }
   }
@@ -114,5 +541,247 @@ body {
     .nav-menu {
       display: none;
     }
+    .nav-desktop{
+      display:block;
+      float:right;
+      list-style-type: none;
+      padding-top:30px;
+      li{
+        float:left;
+        padding:30px;
+        color:get_color(text-primary);
+        text-transform: uppercase;
+        font-size:.9rem;
+      }
+      li:hover{
+        cursor: pointer;
+      }
+    }
+    .nav-acc{
+      display:block;
+      padding-top:29%;
+      font-size:1.2rem;
+      color:get_color(text-default);
+      transition:all .3s linear;
+    }
+    #nav-acc-item{
+      position: absolute;
+      bottom:-100px;
+      height:100px;
+      width:70%;
+      background: get_color(primary-light);
+      z-index:9999;
+      border-radius:0 0 20px 20px;
+      box-shadow:.5px .5px .5px darken(get_color(text-primary), 80%);
+      a{
+        display:block;
+        padding:10px;
+        text-align:center;
+        color:get_color(text-default);
+        text-decoration: none;
+      }
+      a:first-child{
+        border-bottom:1px solid get_color(text-default);
+      }
+      a:hover{
+        color:get_color(text-primary);
+      }
+    }
+    .nav-acc:hover{
+      color:darken(get_color(text-default), 40%);
+      cursor: pointer;
+    }
+  
+    .content{
+      padding-top:10%;
+      .content-list{
+        text-align:left;
+        padding-left:50px;
+      }
+      .text-block{
+        font-size:40px;
+        text-align:left;
+        padding-left:50px;
+      }
+    }
+    .ght{
+      padding-left:50px;
+    }
+    .content-highlight{
+      display:block;
+      .innerlay{
+        position: absolute;
+        width:90%;
+        height:95%;
+        margin:5%;
+        border:3px dotted get_color(text-primary);
+        border-radius:20px;
+        background:get_color(text-primary);
+        background:linear-gradient(rgba(255,255,255,0.20) 20%, transparent, transparent);
+          .text-block{
+            text-align:center;
+            padding:13%;
+          }
+      }
+    }
+
+    /* Hench features list */
+    .hench-features {
+      background-color: get_color(primary-light);
+      ul {
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        // vertical-align: middle;
+        z-index: 999;
+        li {
+          position: relative;
+          display: block;
+          padding: 40px 0 0;
+          overflow: hidden;
+          // vertical-align: middle;
+          .contents-l {
+            text-align: left;
+          }
+          .sep-1 {
+            display: block;
+          }
+          .sep-2 {
+            display: none;
+          }
+          .imgs-1 {
+            float: right;
+          }
+        }
+        li:before {
+          content: "";
+          position: absolute;
+          left: 12.5%;
+          right: 0;
+          width: 50%;
+          height: 2px;
+          background: #5e619c;
+          top: 99px;
+        }
+        li:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          top: 90px;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          background: #5e619c;
+        }
+      }
+      ul:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #5e619c;
+        width: 2px;
+        margin: 0 auto;
+      }
+    }
+    .pre-view{
+      .rete-list{
+        width:20%!important;
+      }
+    }
+    .hench-about{
+      padding-left:50px;
+      padding-right: 50px;
+      .text-block{
+        font-size:2.5em!important;
+      }
+      .txt-sm{
+        text-align:left!important;
+        padding-left:20px;
+      }
+    }
+    .hench-features{
+      .text-block{
+        text-align: center;
+      }
+      ul{
+        .contents-l{
+          text-align:left!important;
+        }
+      }
+    }
+    .hench-news{
+      a.form-control{
+        width:20%;
+        margin-left:40%;
+        text-decoration: none;
+      }
+    }
+    .hench-faq{
+      >.hd{
+        .text-block{
+          width:100%;
+          text-align:center;
+          
+        }
+      }
+      ul{
+        margin: 0 10%!important;
+      }
+    }
+    .hench-contact{
+      .text-block{
+        padding-top:2%!important;
+        text-align: center;
+      }
+      .pre-view{
+        .rete-list{
+          width:40%!important;
+          .block{
+            form{
+              textarea{
+                resize: none;
+              }
+            }
+          }
+        }
+        .rete-list-ext{
+          display:inline-block!important;
+          width:60%;
+          .innerlay{
+            position:absolute;
+            top:30%;
+            left:55%;
+            width:40%;
+            height:50%;
+            margin:0%;
+            background:get_color(primary);
+            border-radius:20px;
+            padding:5%;
+            animation-name: planHighlight;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            p{
+              color:get_color(text-primary);
+            }
+          }
+        }
+      }
+    }
+    .hench-footer{
+      height:70px;
+      .ent{
+        padding-top:20px;
+      }
+    }
   }
 }
+
