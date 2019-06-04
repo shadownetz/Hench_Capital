@@ -8,6 +8,8 @@ $hench-colors: (
 );
 $desktop-size: 1024px;
 $mobile_320: 320px;
+$medium_screen:768px;
+$ipad_pro_height:1366px;
 @keyframes planHighlight {
   0% {
     transform: scale(1);
@@ -20,7 +22,12 @@ $mobile_320: 320px;
   }
 }
 @mixin desktop {
-  @media (min-width:#{$desktop-size}) {
+  @media (min-width:#{$medium_screen})  and (max-height:#{$desktop-size}){
+    @content;
+  }
+}
+@mixin ipad_pro {
+  @media (min-width:#{$desktop-size} ) and (max-height:#{$ipad_pro_height}) {
     @content;
   }
 }
@@ -47,12 +54,15 @@ $mobile_320: 320px;
 }
 body {
   background-color: map-get($hench-colors, primary);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 #henchCapital {
   min-height: 700px;
   overflow: hidden;
   img.hench-logo {
-    margin-top: -50px;
+    margin-top: 20px;
+    width:200px;
+    height:80px;
   }
   .sticky{
     position:fixed;
@@ -536,7 +546,8 @@ body {
       }
     }
   }
-  @include desktop() {
+  
+  @include ipad_pro() {
     .nav-mobile,
     .nav-menu {
       display: none;
@@ -545,21 +556,24 @@ body {
       display:block;
       float:right;
       list-style-type: none;
-      padding-top:30px;
+      padding-top:20px;
       li{
         float:left;
-        padding:30px;
+        padding:20px;
+        padding-top:37px;
         color:get_color(text-primary);
         text-transform: uppercase;
         font-size:.9rem;
+        transition: all .5s linear;
       }
       li:hover{
         cursor: pointer;
+        color:get_color(link);
       }
     }
     .nav-acc{
       display:block;
-      padding-top:29%;
+      padding-top:52px;
       font-size:1.2rem;
       color:get_color(text-default);
       transition:all .3s linear;
@@ -647,10 +661,10 @@ body {
             text-align: left;
           }
           .sep-1 {
-            display: block;
+            display: block!important;
           }
           .sep-2 {
-            display: none;
+            display: none!important;
           }
           .imgs-1 {
             float: right;
@@ -703,8 +717,11 @@ body {
         font-size:2.5em!important;
       }
       .txt-sm{
-        text-align:left!important;
+        text-align:justify!important;
         padding-left:20px;
+      }
+      .pad{
+        padding-top:7%;
       }
     }
     .hench-features{
@@ -781,6 +798,16 @@ body {
       .ent{
         padding-top:20px;
       }
+    }
+  }
+  @include desktop(){
+    .nav-desktop{
+      li{
+        padding:30px;
+      }
+    }
+    .nav-acc{
+      padding-top:24%;
     }
   }
 }

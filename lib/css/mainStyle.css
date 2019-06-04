@@ -30,6 +30,7 @@
 
 body {
   background-color: #08091b;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #henchCapital {
@@ -38,7 +39,9 @@ body {
 }
 
 #henchCapital img.hench-logo {
-  margin-top: -50px;
+  margin-top: 20px;
+  width: 200px;
+  height: 80px;
 }
 
 #henchCapital .sticky {
@@ -506,7 +509,7 @@ body {
   }
 }
 
-@media (min-width: 320px) and (min-width: 1024px) {
+@media (min-width: 320px) and (min-width: 768px) and (max-height: 1024px) {
   #henchCapital .content .hench-faq .l-faq .cont h2, #henchCapital .content .hench-faq .r-faq .cont h2 {
     font-size: 30px !important;
   }
@@ -527,7 +530,7 @@ body {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-height: 1366px) {
   #henchCapital {
     /* Hench features list */
   }
@@ -539,21 +542,25 @@ body {
     display: block;
     float: right;
     list-style-type: none;
-    padding-top: 30px;
+    padding-top: 20px;
   }
   #henchCapital .nav-desktop li {
     float: left;
-    padding: 30px;
+    padding: 20px;
+    padding-top: 37px;
     color: #fafafa;
     text-transform: uppercase;
     font-size: .9rem;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
   }
   #henchCapital .nav-desktop li:hover {
     cursor: pointer;
+    color: #3297cc;
   }
   #henchCapital .nav-acc {
     display: block;
-    padding-top: 29%;
+    padding-top: 52px;
     font-size: 1.2rem;
     color: #8486a6;
     -webkit-transition: all .3s linear;
@@ -642,10 +649,10 @@ body {
     text-align: left;
   }
   #henchCapital .hench-features ul li .sep-1 {
-    display: block;
+    display: block !important;
   }
   #henchCapital .hench-features ul li .sep-2 {
-    display: none;
+    display: none !important;
   }
   #henchCapital .hench-features ul li .imgs-1 {
     float: right;
@@ -694,8 +701,11 @@ body {
     font-size: 2.5em !important;
   }
   #henchCapital .hench-about .txt-sm {
-    text-align: left !important;
+    text-align: justify !important;
     padding-left: 20px;
+  }
+  #henchCapital .hench-about .pad {
+    padding-top: 7%;
   }
   #henchCapital .hench-features .text-block {
     text-align: center;
@@ -756,6 +766,15 @@ body {
   }
   #henchCapital .hench-footer .ent {
     padding-top: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 1024px) {
+  #henchCapital .nav-desktop li {
+    padding: 30px;
+  }
+  #henchCapital .nav-acc {
+    padding-top: 24%;
   }
 }
 /*# sourceMappingURL=mainStyle.css.map */
